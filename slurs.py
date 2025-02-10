@@ -16,6 +16,3 @@ def load_slur_data() -> re.Pattern[str]:
         raise ValueError("Missing required keys 'slurs' or 'slur_groups' in slurs.json")
 
     return re.compile("|".join(f"(?P<{name}>{p})" for name, p in zip(slur_groups, slurs, strict=True)), re.IGNORECASE)
-
-
-SLUR_REGEX = load_slur_data()
