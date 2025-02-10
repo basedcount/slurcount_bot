@@ -1,0 +1,52 @@
+[project]
+name = "Slurcount_bot"
+version = "0.0.1"
+description = "A discord bot that tracks slur usage."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "hikari-crescent>=1.1.0",
+    "motor>=3.7.0",
+    "python-dotenv>=1.0.1",
+]
+
+[tool.mypy]
+strict = true
+check_untyped_defs = true
+disallow_any_generics = true
+no_implicit_optional = true
+show_error_codes = true
+strict_equality = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unreachable = true
+warn_unused_configs = true
+no_implicit_reexport = true
+ignore_missing_imports = true
+exclude = [".venv", "venv"]
+
+[tool.black]
+line-length = 160
+
+[tool.ruff.format]
+docstring-code-format = true
+docstring-code-line-length = 88
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "BLE",    # Allow bare `except:` usage without specifying an exception type.
+    "D100",   # Allow missing module-level doc strings.
+    "D203",   # Allow class doc strings without requiring a blank line before them (conflicts with D211).
+    "D212",   # Allow multi-line docstring summaries to start on the second line (conflicts with D213).
+    "D401",   # Allow docstring summaries that are not in imperative mood.
+    "EM",     # Allow exception messages that do not follow specific formatting rules.
+    "E501",   # Allow lines to exceed the maximum character limit (handled by Black).
+    "FBT",    # Allow functions to take boolean positional arguments.
+    "S603",   # Allow `subprocess` calls without enforcing `shell=False` (potential security risk).
+    "T201",   # Allow usage of `print()` instead of enforcing logging.
+    "TRY003", # Allow specifying long error messages inside the exception class instead of outside.
+]
+
+[dependency-groups]
+dev = ["black>=25.1.0", "motor-types>=1.0.0b4", "mypy>=1.15.0", "ruff>=0.9.5"]
